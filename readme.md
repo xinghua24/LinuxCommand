@@ -7,7 +7,7 @@ A shell script typically begins with a shebang:
 #!/bin/bash
 ```
 
-to execute
+to execute a bash script file
 ```bash
 bash myScript.sh
 
@@ -30,17 +30,44 @@ printf "%-5s %-10s %-4.2f\n" 2 James 90.9989
 printf "%-5s %-10s %-4.2f\n" 3 Jeff 77.564
 ```
 
+# Quotes
+**Single Quotes vs Double Quotes:**<br>
+Single quotes won't interpolate anything. Double quote will(e.g variables, backticks, certain \ escapes, etc...)
+
+**Double Quotes**<br>
+The backslash retains its special meaning only when followed by one of the following characters: $, backtick, ", \, or newline.
+```bash
+#!/bin/bash
+foo="FOO"
+echo 'single quotes gives you $foo'  # $foo
+echo "double quotes give you $foo" # foo
+
+# Use backslash for escape
+echo "\$" # $
+echo "\`" # `
+echo "\"" # "
+echo "\\" # \
+echo "abc\
+de" # abcde
+
+# escape for \t\n
+echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
+echo -e "\t\n" # the correct way to escape for \t and \n
+```
+<br>
+
 # Control Statement
 ## If Statement
 **-z string** returns True if the string is null (an empty string). see *man test*
 ```bash
 #!/bin/sh
-if [ -z $1 ]
-else
+if [ -z $1 ]; then
   echo "usage - test.sh val1"
 fi
 ```
+<br>
 
+If...else...
 ```bash
 #!/bin/sh
 if ! [ -z $1 ]
@@ -50,6 +77,9 @@ else
   echo "usage - test.sh val1"
 fi
 ```
+<br>
+
+If...elif...else <br>
 **-d FILE** returns true if FILE exists and is a directory.
 **-f FILE** returns true if FILE exists and is a regular file. see *man test*
 ```bash
@@ -62,6 +92,7 @@ else
   echo $1 is not a file, nor a directory
 fi
 ```
+<br>
 
 Test equality
 ```bash

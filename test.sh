@@ -1,8 +1,16 @@
 #!/bin/bash
-T1="foo"
-T2="bar"
-if [ "$T1" = "$T2" ]; then
-  echo expression evaluated as true
-else
-  echo expression evaluated as false
-fi
+foo="FOO"
+echo 'single quotes gives you $foo'  # $foo
+echo "double quotes give you $foo" # foo
+
+# Use backslash for escape
+echo "\$" # $
+echo "\`" # `
+echo "\"" # "
+echo "\\" # \
+echo "abc\
+de" # abcde
+
+# escape for \t\n
+echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
+echo -e "\t\n" # the correct way to escape for \t and \n

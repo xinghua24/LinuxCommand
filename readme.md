@@ -1,7 +1,8 @@
 Resources:
 * [http://linuxcommand.org/index.php](http://linuxcommand.org/index.php)
 
-# Basics
+Basics
+=====================================================
 A shell script typically begins with a shebang:
 ```bash
 #!/bin/bash
@@ -30,12 +31,35 @@ printf "%-5s %-10s %-4.2f\n" 2 James 90.9989
 printf "%-5s %-10s %-4.2f\n" 3 Jeff 77.564
 ```
 
-# Quotes
+
+<br>
+
+**using variables** - variables can be accessed by prefixing variable name with dollar sign($).
+you may also use ${var}
+```bash
+#!/bin/bash
+fruit=apple
+count=5
+echo "We have $count ${fruit}(s)"
+```
+use ${#var} to get the length of a variable's value.
+
+<br>
+
+Environment Variables are variables used to stored special values. usually defined using Upper case letters.
+Common variables are HOME, PWD, USER, UID, SHELL, PATH etc.
+
+
+
+Quotes
+=====================================================
 **Single Quotes vs Double Quotes:**<br>
 Single quotes won't interpolate anything. Double quote will(e.g variables, backticks, certain \ escapes, etc...)
 
 **Double Quotes**<br>
 The backslash retains its special meaning only when followed by one of the following characters: $, backtick, ", \, or newline.
+
+-e option will enable interpretation of backslash escapes. see *man echo* for details
 ```bash
 #!/bin/bash
 foo="FOO"
@@ -54,9 +78,11 @@ de" # abcde
 echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
 echo -e "\t\n" # the correct way to escape for \t and \n
 ```
-<br>
 
-# Control Statement
+
+
+Control Statement
+=====================================================
 ## If Statement
 **-z string** returns True if the string is null (an empty string). see *man test*
 ```bash
@@ -104,4 +130,51 @@ if [ "$T1" = "$T2" ]; then
 else
   echo expression evaluated as false
 fi
+```
+
+
+
+
+Command Substitution
+===========================================
+Syntax - recommended is $(). Backquote is deprecated.
+```bash
+$(command)
+`command`
+```
+
+example
+```
+echo $(date +%m/%d/%y)
+
+touch file-$(date +%y-%m-%d).txt
+```
+
+
+sed
+===================================================
+Sed is the ultimate stream editor. It performs editing operations from standard input or a file.
+The most well-known use for sed is substituting text.
+Basic usage
+```bash
+sed [options] commands [file-to-edit]
+echo ""
+```
+
+Sed example
+```bash
+# print the input as result. '' does not contain any operation.
+sed '' file
+
+# Substitution. 's' is for substitute command. 'g' for global. without g only the first instance is substituted
+# syntax 's/old_word/new_word/'
+input=ABC-DEF-GHI
+echo $input | sed 's|-|---|g' # ABC---DEF---GHI
+echo $input | sed 's|-||g' # ABCDEFGHI
+
+# in place replace with -i
+sed -i 's|old_word|new_word|g' inputFile
+
+# combine multiple commands with -e
+echo $input | sed -e 's|-|---|g' -e 's|DEF|def|g' # ABC---def---GHI
 ```

@@ -155,6 +155,10 @@ sed
 ===================================================
 Sed is the ultimate stream editor. It performs editing operations from standard input or a file.
 The most well-known use for sed is substituting text.
+Tutorial:
+* [Sed Basic](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux#basic-usage)
+* [Sed Intro](http://www.grymoire.com/Unix/Sed.html)
+
 Basic usage
 ```bash
 sed [options] commands [file-to-edit]

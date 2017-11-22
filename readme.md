@@ -132,7 +132,16 @@ else
 fi
 ```
 
-
+Use for loop to traverse files in a folder
+```bash
+#!/bin/bash
+myFolder="MyFolder/*.txt"
+for file in $myFolder
+do
+  echo "$file content:"
+  cat $file
+done
+```
 
 
 Command Substitution

@@ -1,3 +1,7 @@
 #!/bin/bash
-input="ABC.DEF"
-echo $input | sed "s|\.|\.\.\.|g"
+myFolder="MyFolder/*.txt"
+for file in $myFolder
+do
+  echo "$file content:"
+  cat $file
+done

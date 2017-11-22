@@ -178,13 +178,13 @@ echo $input | sed 's/-/---/g' # ABC---DEF---GHI
 echo $input | sed 's|-||g' # ABCDEFGHI
 echo $input | sed 's/-//g' # ABCDEFGHI
 
-# in place replace with -i
-sed -i 's|old_word|new_word|g' inputFile
-
 # combine multiple commands with -e
 echo $input | sed -e 's|-|---|g' -e 's|DEF|def|g' # ABC---def---GHI
 
-# matching text
+# in place replace with -i
+sed -i 's|old_word|new_word|g' inputFile
+
+# matching pattern
 sed 's/^PATTERN/REPLACED/' inputFile
 
 # no print
@@ -193,4 +193,15 @@ sed 's/^PATTERN/REPLACED/' inputFile
 sed -n '' inputFile # no output.
 sed -n '1p' inputFile # print 1st line
 sed -n '1,4p' inputFile # print 1st to 4th line
+
+
+# Special characters $.*[\]^
+# Reference: https://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script
+input="ABC\$DEF"
+echo $input | sed 's|\$|\$\$\$|g'
+input="ABC.DEF"
+echo $input | sed "s|\.|\.\.\.|g"
+input="ABC\\DEF"
+echo $input | sed 's|\\|\\\\|g'
+
 ```

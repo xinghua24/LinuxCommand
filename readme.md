@@ -217,6 +217,35 @@ echo $input | sed 's|\\|\\\\|g'
 
 ```
 
+## AWK
+AWK can solve complex text processing tasks with a few lines of code. 
+By default AWK execute commands on every line. We can restrict this by providing patterns.
+
+Basic syntax
+```bash
+# awk [options] file
+awk '{print}' marks.txt # to display the content of a file marks.txt
+```
+
+marks.txt
+```
+1) Amit     Physics   80
+2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89
+```
+
+run with a command file. command.txt has content {print}
+```bash
+awk -f command.txt marks.txt
+```
+
+To print certain columns. $0 represent the whole line
+```bash
+# print column 3 and column 4
+awk '{print $3 "\t" $4}' marks.txt
+```
 
 ## Other Commands
 basename - return filename or directory portion of pathname

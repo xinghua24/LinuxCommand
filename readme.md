@@ -252,3 +252,6 @@ basename - return filename or directory portion of pathname
 ```bash
 basename "foo/bar/abc.txt"  # "abc.txt"
 ```
+
+Reference:
+* [AWK Tutorial](https://www.tutorialspoint.com/awk/index.htm)

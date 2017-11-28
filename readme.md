@@ -84,6 +84,7 @@ echo -e "\t\n" # the correct way to escape for \t and \n
 Control Statement
 =====================================================
 ## If Statement
+=====================================================
 **-z string** returns True if the string is null (an empty string). see *man test*
 ```bash
 #!/bin/sh
@@ -132,6 +133,9 @@ else
 fi
 ```
 
+
+## Iteration Statement
+=====================================================
 Use for loop to traverse files in a folder
 ```bash
 #!/bin/bash
@@ -213,4 +217,12 @@ echo $input | sed "s|\.|\.\.\.|g"
 input="ABC\\DEF"
 echo $input | sed 's|\\|\\\\|g'
 
+```
+
+
+## Other Commands
+===================================================
+basename - return filename or directory portion of pathname
+```bash
+basename "foo/bar/abc.txt"  # "abc.txt"
 ```

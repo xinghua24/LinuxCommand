@@ -143,6 +143,12 @@ do
 done
 ```
 
+To read each line using while
+```bash
+while read line; do
+    echo $line
+done < input.txt
+```
 
 Command Substitution
 ===========================================

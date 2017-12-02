@@ -254,6 +254,10 @@ awk '{print $3 "\t" $4}' marks.txt
 ```
 
 ## Other Commands
+. and source command<br>
+Dot means source the input file. 
+[meaning of dot command](https://unix.stackexchange.com/questions/114300/whats-the-meaning-of-a-dot-before-a-command-in-shell)
+
 basename - return filename or directory portion of pathname
 ```bash
 basename "foo/bar/abc.txt"  # "abc.txt"

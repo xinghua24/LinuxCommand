@@ -1,5 +1,3 @@
-Resources:
-* [http://linuxcommand.org/index.php](http://linuxcommand.org/index.php)
 <!-- TOC -->
 
 - [Basics](#basics)
@@ -15,8 +13,10 @@ Resources:
 
 <!-- /TOC -->
 
-# Basics
+Resources:
+* [Linux Command](http://linuxcommand.org/index.php)
 
+# Basics
 A shell script typically begins with a shebang:
 ```bash
 #!/bin/bash
@@ -94,7 +94,7 @@ echo -e "\t\n" # the correct way to escape for \t and \n
 ```
 
 # Reading User input
-```
+```sh
 read -p "username: " username
 read -sp "password: " password
 echo $username

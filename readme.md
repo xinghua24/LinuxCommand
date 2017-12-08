@@ -1,8 +1,22 @@
 Resources:
 * [http://linuxcommand.org/index.php](http://linuxcommand.org/index.php)
+<!-- TOC -->
 
-Basics
-=====================================================
+- [Basics](#basics)
+- [Quotes](#quotes)
+- [Reading User input](#reading-user-input)
+- [Control Statement](#control-statement)
+    - [If Statement](#if-statement)
+    - [Iteration Statement](#iteration-statement)
+- [Command Substitution](#command-substitution)
+- [Sed](#sed)
+- [AWK](#awk)
+- [Other Commands](#other-commands)
+
+<!-- /TOC -->
+
+# Basics
+
 A shell script typically begins with a shebang:
 ```bash
 #!/bin/bash
@@ -51,8 +65,8 @@ Common variables are HOME, PWD, USER, UID, SHELL, PATH etc.
 
 
 
-Quotes
-=====================================================
+# Quotes
+
 **Single Quotes vs Double Quotes:**<br>
 Single quotes won't interpolate anything. Double quote will(e.g variables, backticks, certain \ escapes, etc...)
 
@@ -79,10 +93,19 @@ echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
 echo -e "\t\n" # the correct way to escape for \t and \n
 ```
 
+# Reading User input
+```
+read -p "username: " username
+read -sp "password: " password
+echo $username
+echo $password
+```
+Reference 
+* [Bash Tutorial - User Input](https://ryanstutorials.net/bash-scripting-tutorial/bash-input.php#summary)
 
 
-Control Statement
-=====================================================
+# Control Statement
+
 ## If Statement
 **-z string** returns True if the string is null (an empty string). see *man test*
 ```bash
@@ -152,8 +175,7 @@ while read line; do
 done < input.txt
 ```
 
-Command Substitution
-===========================================
+# Command Substitution
 Syntax - recommended is $(). Backquote is deprecated.
 ```bash
 $(command)
@@ -168,8 +190,7 @@ touch file-$(date +%y-%m-%d).txt
 ```
 
 
-sed
-===================================================
+# Sed
 Sed is the ultimate stream editor. It performs editing operations from standard input or a file.
 The most well-known use for sed is substituting text.
 Tutorial:
@@ -223,7 +244,7 @@ echo $input | sed 's|\\|\\\\|g'
 
 ```
 
-## AWK
+# AWK
 AWK can solve complex text processing tasks with a few lines of code. 
 By default AWK execute commands on every line. We can restrict this by providing patterns.
 
@@ -253,7 +274,7 @@ To print certain columns. $0 represent the whole line
 awk '{print $3 "\t" $4}' marks.txt
 ```
 
-## Other Commands
+# Other Commands
 . and source command<br>
 Dot means source the input file. 
 [meaning of dot command](https://unix.stackexchange.com/questions/114300/whats-the-meaning-of-a-dot-before-a-command-in-shell)

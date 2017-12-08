@@ -1,3 +1,4 @@
+**Table Of Content**
 <!-- TOC -->
 
 - [Basics](#basics)
@@ -23,7 +24,7 @@ A shell script typically begins with a shebang:
 ```
 
 to execute a bash script file
-```bash
+```sh
 bash myScript.sh
 
 chmod 755 myScript.sh
@@ -31,13 +32,13 @@ chmod 755 myScript.sh
 ```
 
 Read from command line
-```bash
+```sh
 #!/bin/bash
 read -p "Please enter a value: " val
 echo "The value you enter is $val"
 ```
 print format
-```bash
+```sh
 #!/bin/bash
 printf "%-5s %-10s %-4s\n" No Name Mark
 printf "%-5s %-10s %-4.2f\n" 1 Sarath 80.3456
@@ -50,7 +51,7 @@ printf "%-5s %-10s %-4.2f\n" 3 Jeff 77.564
 
 **using variables** - variables can be accessed by prefixing variable name with dollar sign($).
 you may also use ${var}
-```bash
+```sh
 #!/bin/bash
 fruit=apple
 count=5
@@ -95,14 +96,27 @@ echo -e "\t\n" # the correct way to escape for \t and \n
 
 # Reading User input
 ```sh
+# withInput.sh file
 read -p "username: " username
 read -sp "password: " password
 echo $username
 echo $password
 ```
+
+To provide inputs from stdin, you can pipe to a bash file if there is only one input. For multiline input, use
+here-docs.
+```sh
+echo 'This string will be piped to stdin.' | /my/bash/script
+
+/my/bash/script <<STDIN 
+value1
+value2
+STDIN
+```
+
 Reference 
 * [Bash Tutorial - User Input](https://ryanstutorials.net/bash-scripting-tutorial/bash-input.php#summary)
-
+* [Send String to stdin](https://stackoverflow.com/questions/6541109/send-string-to-stdin)
 
 # Control Statement
 

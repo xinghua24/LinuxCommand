@@ -4,6 +4,7 @@
 - [Basics](#basics)
 - [Quotes](#quotes)
 - [Reading User input](#reading-user-input)
+    - [Here Docs](#here-docs)
 - [Control Statement](#control-statement)
     - [If Statement](#if-statement)
     - [Iteration Statement](#iteration-statement)
@@ -95,6 +96,7 @@ echo -e "\t\n" # the correct way to escape for \t and \n
 ```
 
 # Reading User input
+reading from input
 ```sh
 # withInput.sh file
 read -p "username: " username
@@ -114,7 +116,18 @@ value2
 STDIN
 ```
 
+## Here Docs
+A here document is a block of text or code which is redirected to an interactive program or a command.
+```sh
+#!/bin/bash
+Command <<MyUniqueLimitString
+some text
+some more text 
+MyUniqueLimitString
+```
+
 Reference 
+* [Here Docs](https://ss64.com/bash/syntax-here.html)
 * [Bash Tutorial - User Input](https://ryanstutorials.net/bash-scripting-tutorial/bash-input.php#summary)
 * [Send String to stdin](https://stackoverflow.com/questions/6541109/send-string-to-stdin)
 

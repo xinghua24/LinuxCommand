@@ -1,0 +1,4 @@
+Hello
+World
+Linux
+PWD=/home/xing/Documents/STSWorkspaces/LinuxCommand/MyFolder

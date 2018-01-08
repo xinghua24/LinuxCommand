@@ -11,6 +11,6 @@ Options<br>
 
 Example<br>
 ```
-history | head -n 0
+ps aux | head -n 20
 ```
 

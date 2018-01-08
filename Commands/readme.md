@@ -11,7 +11,7 @@ Locate command
 - [whereis](whereis.md) - locate the binary, source, and manual page files for a command
 
 Find file 
-- [locate](locate) - find files by pattern
+- [locate](locate.md) - find files by pattern
 - [find](find.md)
 
 

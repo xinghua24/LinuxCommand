@@ -11,9 +11,10 @@ Locate command
 - [whereis](whereis.md) - locate the binary, source, and manual page files for a command
 
 Find file 
-- [locate](locate.md) - find files by pattern
-- [find](find.md)
+- [locate](locate.md) - find files by pattern in update.db
+- [find](find.md) - search for files in a directory hierarchy
 
 
-
+grep
+- [grep](grep.md) - global regular expression print
 

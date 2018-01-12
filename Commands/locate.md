@@ -18,7 +18,7 @@ In order to operate efficiently, 'locate' uses a database 'udpatedb' rather than
 
 
 Option<br>
--i, --ignore-case ==> ignore case
+-i, --ignore-case ==> ignore case<br>
 -l, --limit, -n LIMIT ==> exit successfully after finding LIMIT entries.
 
 

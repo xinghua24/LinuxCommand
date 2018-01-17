@@ -10,27 +10,23 @@
 - For example: iptables, reboot, fdisk, ifconfig, swapon
 
 /etc – Configuration Files
-
 - Contains configuration files required by all programs.
 - This also contains startup and shutdown shell scripts used to start/stop individual programs.
 - For example: /etc/resolv.conf, /etc/logrotate.conf
 
 
 /dev – Device Files
-
 - Contains device files.
 - These include terminal devices, usb, or any device attached to the system.
 - For example: /dev/tty1, /dev/usbmon0
 
 /proc – Process Information
-
 - Contains information about system process.
 - This is a pseudo filesystem contains information about running process. For example: /proc/{pid} directory contains information about the process with that particular pid.
 - This is a virtual filesystem with text information about system resources. For example: /proc/uptime
 
 
 /var – Variable Files
-
 - var stands for variable files.
 - Content of the files that are expected to grow can be found under this directory.
 - This includes — system log files (/var/log); packages and database files (/var/lib); emails (/var/mail); print queues (/var/spool); lock files (/var/lock); temp files needed across reboots (/var/tmp);

@@ -4,6 +4,7 @@ ls - list directory contents
 most common option is -a(--all), -l
 
 other options
+- -a ==> show hidden file
 - -r ==> reversal
 - -R recursive ==> list subdirectories
 - -l ==> use a long listing format
@@ -54,6 +55,34 @@ $ ls -i
 7079218 MyFolder
 6161896 readme.md
 6164188 test.sh
+```
+
+example - sort by date
+```
+$ ls -lt
+total 64
+-rw-rw-r-- 1 xing xing 1921 Jan 19 03:51 ls.md
+-rw-rw-r-- 1 xing xing 2888 Jan 14 10:52 find.md
+-rw-rw-r-- 1 xing xing  678 Jan 12 02:11 grep.md
+-rw-rw-r-- 1 xing xing  452 Jan 12 02:04 readme.md
+-rw-rw-r-- 1 xing xing  899 Jan  7 20:06 locate.md
+-rw-rw-r-- 1 xing xing  701 Jan  7 19:32 which.md
+```
+
+example - ls only config file
+```
+$ ls -l /etc/dhcp/*.conf
+-rw-r--r-- 1 root root 1735 Jan 13  2016 /etc/dhcp/dhclient.conf
+```
+
+example - list files and directories with full path
+```
+$ ls -l -d $PWD/*
+-rw-rw-r-- 1 xing xing  604 Jan  2 19:02 /home/xing/Documents/STSWorkspaces/LinuxCommand/Commands/cat.md
+-rw-rw-r-- 1 xing xing   24 Dec 30 01:37 /home/xing/Documents/STSWorkspaces/LinuxCommand/Commands/cd.md
+-rw-rw-r-- 1 xing xing  415 Dec 30 22:03 /home/xing/Documents/STSWorkspaces/LinuxCommand/Commands/cp.md
+-rw-rw-r-- 1 xing xing 2888 Jan 14 10:52 /home/xing/Documents/STSWorkspaces/LinuxCommand/Commands/find.md
+-rw-rw-r-- 1 xing xing  678 Jan 12 02:11 /home/xing/Documents/STSWorkspaces/LinuxCommand/Commands/grep.md
 ```
 
 

@@ -1,4 +1,10 @@
-Display file
+Common
+- [ls](ls.md)
+- [cp](cp.md)
+- [rm](rm.md)
+- [chmod](chmod.md)
+
+Display File
 - [cat](cat.md)
 - [nl](nl.md)
 - [more](more.md)
@@ -6,15 +12,15 @@ Display file
 - [head](head.md)
 - [tail](tail.md)
 
-Locate command
+Locate Command
 - [which](which.md) - locate a command
 - [whereis](whereis.md) - locate the binary, source, and manual page files for a command
 
-Find file 
+Find File 
 - [locate](locate.md) - find files by pattern in update.db
 - [find](find.md) - search for files in a directory hierarchy
 
 
-grep
+Grep
 - [grep](grep.md) - global regular expression print
 

@@ -3,6 +3,8 @@ Common
 - [cp](cp.md)
 - [rm](rm.md)
 - [chmod](chmod.md)
+- [chgrp](chgrp.md)
+- [chown](chown.md)
 
 Display File
 - [cat](cat.md)

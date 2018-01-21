@@ -1,4 +1,4 @@
-chgrp - change group ownership
+chgrp - change group ownership. the group must exist in /etc/group
 
 **options**<br>
 - -R, --recursiveoperate on files and directories recursively
@@ -23,3 +23,5 @@ example - change group in a folder
 ```
 sudo chgrp -R bin folder1
 ```
+
+

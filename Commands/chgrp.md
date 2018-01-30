@@ -12,6 +12,9 @@ $ ls -l log.txt
 
 $ sudo chgrp -v xing log.txt 
 changed group of 'log.txt' from root to xing
+
+$ ls -l log.txt 
+-rw-r--r-- 1 root xing 5726 Jan 21 02:27 log.txt
 ```
 
 example - change group using a reference file

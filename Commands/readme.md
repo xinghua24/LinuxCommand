@@ -26,4 +26,10 @@ Find File
 Grep
 - [grep](grep.md) - global regular expression print
 
-[tar](tar.md)
+Other
+- [tar](tar.md)
+- [df](df.md) report file system disk space usag
+- [du](du.md) estimate file space usage
+
+
+

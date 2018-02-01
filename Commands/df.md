@@ -1,4 +1,4 @@
-df - report file system disk space usage. default is KB
+df - disk free. report file system disk space usage. default is KB
 
 options 
 - -a ==> all

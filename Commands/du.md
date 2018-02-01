@@ -1,4 +1,4 @@
-du - estimate file space usage
+du - disk usage. estimate file space usage
 
 option 
 -h ==> human readable

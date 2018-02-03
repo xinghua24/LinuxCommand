@@ -31,5 +31,6 @@ Other
 - [df](df.md) report file system disk space usag
 - [du](du.md) estimate file space usage
 - [ln](ln.md) create links
+- [diff](diff.md) compare files line by line
 
 

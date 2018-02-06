@@ -32,5 +32,6 @@ Other
 - [du](du.md) estimate file space usage
 - [ln](ln.md) create links
 - [diff](diff.md) compare files line by line
+- [date](date.md) print or set the system date and time
 
 

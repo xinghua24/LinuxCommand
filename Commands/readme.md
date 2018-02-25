@@ -28,6 +28,7 @@ Grep
 
 Other
 - [tar](tar.md)
+- [zip and zipinfo](zip.md)
 - [df](df.md) report file system disk space usag
 - [du](du.md) estimate file space usage
 - [ln](ln.md) create links

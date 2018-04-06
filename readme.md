@@ -3,6 +3,7 @@
 
 - [Basics](#basics)
 - [Quotes](#quotes)
+- [String Manipulation](#string-manipulation)
 - [Reading User input](#reading-user-input)
     - [Here Docs](#here-docs)
 - [Control Statement](#control-statement)
@@ -17,6 +18,8 @@
 
 Resources:
 * [Linux Command](http://linuxcommand.org/index.php)
+* [Bash Guide for Beginners](Bash Guide for Beginners)
+* [Advanced Bash-Scripting Guide](http://www.tldp.org/LDP/abs/html/index.html)
 
 # Basics
 A shell script typically begins with a shebang:
@@ -94,6 +97,34 @@ de" # abcde
 echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
 echo -e "\t\n" # the correct way to escape for \t and \n
 ```
+
+# String Manipulation
+String Length
+```bash
+stringZ=abcABC123ABCabc
+echo ${#stringZ}   # 15
+echo `expr length $stringZ`  # 15
+```
+
+Substring, format is ${string:position} or ${string:position:length}
+```bash
+stringZ=abcABC123ABCabc
+echo ${stringZ:5}    # C123ABCabc
+echo ${stringZ:2:3}    # cAB
+```
+
+Substring Replacement for 1st match: ${string/substring/replacement} <br>
+Substring Replacement for all match: ${string//substring/replacement}
+```bash
+stringZ=abcABC123ABCabc
+echo ${stringZ/abc/xyz} # Replaces first match of 'abc' with 'xyz'.
+echo ${stringZ//abc/xyz}  # Replaces all matches of 'abc' with # 'xyz'.
+```
+
+
+Reference:
+* [For more, see Manipulating Strings Guide](https://www.tldp.org/LDP/abs/html/string-manipulation.html)
+
 
 # Reading User input
 reading from input
@@ -246,7 +277,7 @@ echo $input | sed 's/-//g' # ABCDEFGHI
 # combine multiple commands with -e
 echo $input | sed -e 's|-|---|g' -e 's|DEF|def|g' # ABC---def---GHI
 
-# in place replace with -i
+# in place replace with -i, very useful to substitute string in file
 sed -i 's|old_word|new_word|g' inputFile
 
 # matching pattern
@@ -309,6 +340,12 @@ Dot means source the input file.
 basename - return filename or directory portion of pathname
 ```bash
 basename "foo/bar/abc.txt"  # "abc.txt"
+```
+
+
+To check return value from a command, 0 means success
+```bash
+echo $?
 ```
 
 Reference:

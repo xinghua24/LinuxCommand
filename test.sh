@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 myFolder="MyFolder/*.txt"
 for file in $myFolder
 do

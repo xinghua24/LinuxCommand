@@ -1,10 +1,8 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
 
-stringZ=abcABC123ABCabc
-
-echo ${stringZ/abc/xyz}       # xyzABC123ABCabc
-                              # Replaces first match of 'abc' with 'xyz'.
-
-echo ${stringZ//abc/xyz}      # xyzABC123ABCxyz
-                              # Replaces all matches of 'abc' with # 'xyz'.
-
-
+foo | echo a
+echo bar
+read -p 'press Enter to exit'

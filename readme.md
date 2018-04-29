@@ -12,6 +12,7 @@
 - [Command Substitution](#command-substitution)
 - [Sed](#sed)
 - [AWK](#awk)
+- [Set Command](#set-command)
 - [Other Commands](#other-commands)
 
 <!-- /TOC -->
@@ -20,12 +21,27 @@ Resources:
 * [Linux Command](http://linuxcommand.org/index.php)
 * [Bash Guide for Beginners](Bash Guide for Beginners)
 * [Advanced Bash-Scripting Guide](http://www.tldp.org/LDP/abs/html/index.html)
+* [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents)
+To Run Bash in Windows OS, install Git. Use Git Bash to run bash code.
 
 # Basics
 A shell script typically begins with a shebang:
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 ```
+
+You should use #!/usr/bin/env bash for portability: different *nixes put bash in different places, 
+and using /usr/bin/env is a workaround to run the first bash found on the PATH
+
+Using a shebang line to invoke the appropriate interpreter is not just for BASH. 
+You can use the shebang for any interpreted language on your system such as Perl, Python, PHP (CLI) and many others.
+
+shebang can also used for other languages
+```
+#!/usr/bin/env perl
+```
+
+[Bash Shebang](https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang)
 
 to execute a bash script file
 ```sh
@@ -332,6 +348,25 @@ To print certain columns. $0 represent the whole line
 awk '{print $3 "\t" $4}' marks.txt
 ```
 
+# Set Command
+Set command is very useful for debugging and maintainance of script.
+
+set allows you to change the values of shell options and set the positional parameters, or to display the names and values of shell variables.
+
+- **nounset**  Same as -u. Treat unset variables and parameters other than the special parameters ‘@’ or ‘*’ as an error when performing parameter expansion.
+- **errexit** Same as -e. exit immediately if command fail(not return 0)
+- **pipefail** return 0 only when all commands in the pipeline exit successfully
+
+```sh
+set -o errexit
+set -o nounset
+set -o pipefail
+```
+
+Reference
+- [Set Reference](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
+- [ruanyifeng.com Set Command](http://www.ruanyifeng.com/blog/2017/11/bash-set.html)
+
 # Other Commands
 . and source command<br>
 Dot means source the input file. 
@@ -350,3 +385,5 @@ echo $?
 
 Reference:
 * [AWK Tutorial](https://www.tutorialspoint.com/awk/index.htm)
+
+

@@ -24,4 +24,7 @@ ll -i log2018*
 7084286 lrwxrwxrwx 1 xing xing 7 Feb  1 02:52 log2018SLink -> log2018
 ```
 
-
+It is possible for the soft link to link to file relative to the soft link. Here softLnPwd.sh points to ../pwd.sh
+```
+ln -s ../pwd.sh foo/softLnPwd.sh
+```

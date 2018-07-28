@@ -27,8 +27,13 @@ To Run Bash in Windows OS, install Git. Use Git Bash to run bash code.
 # Basics
 A shell script typically begins with a shebang:
 ```bash
+#!/bin/bash
 #!/usr/bin/env bash
 ```
+
+/bin/sh might be a link to ash, bash, dash, ksh, zsh, etc.
+
+As long as you stick to sh features only, you can (and probably even should) use #!/bin/sh and the script should work fine, no matter which shell it is.
 
 You should use #!/usr/bin/env bash for portability: different *nixes put bash in different places, 
 and using /usr/bin/env is a workaround to run the first bash found on the PATH

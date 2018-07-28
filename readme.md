@@ -225,9 +225,8 @@ fi
 Test equality
 ```bash
 #!/bin/bash
-T1="foo"
-T2="bar"
-if [ "$T1" = "$T2" ]; then
+T1="bar"
+if [ $T1 = "bar" ]; then
   echo expression evaluated as true
 else
   echo expression evaluated as false

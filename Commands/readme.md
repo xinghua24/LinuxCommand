@@ -13,6 +13,7 @@ Display File
 - [less](less.md)
 - [head](head.md)
 - [tail](tail.md)
+- [od](od.md)
 
 Locate Command
 - [which](which.md) - locate a command

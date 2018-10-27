@@ -6,7 +6,7 @@ most common option is -a(--all), -l
 other options
 - -a ==> show hidden file
 - -r ==> reversal
-- -R recursive ==> list subdirectories
+- -R ==> recursive, list subdirectories
 - -l ==> use a long listing format
 - -s(--size) ==> print the allocated size of each file, in clocks
 - -i, --inode ==> prints inode

@@ -29,6 +29,9 @@
 
 <!-- /TOC -->
 
+Utility: 
+* [Execute Bash Online](https://www.tutorialspoint.com/execute_bash_online.php)
+
 Resources:
 * [Linux Command](http://linuxcommand.org/index.php)
 * [Book - Bash Guide for Beginners](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/)
@@ -39,9 +42,11 @@ To Run Bash in Windows OS, install Git. Use Git Bash to run bash code.
 # Basics
 A shell script typically begins with a shebang:
 ```bash
-#!/bin/bash
-#!/usr/bin/env bash
+#!/bin/sh
 ```
+
+Bourne shell usually starts with `#!/bin/sh`. It is oldest. Bash shell script starts with `#!/bin/bash`. 
+Bash stands for "Bourne Again SHell". It is a replacement/improvement of original Bourne shell(sh).
 
 /bin/sh might be a link to ash, bash, dash, ksh, zsh, etc.
 
@@ -58,7 +63,9 @@ shebang can also used for other languages
 #!/usr/bin/env perl
 ```
 
-[Bash Shebang](https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang)
+
+* [Bash Shebang](https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang)
+* [Quora diff between Shell and Bash](https://www.quora.com/What-is-the-difference-between-Shell-scripting-and-Bash-Shell-scripting)
 
 to execute a bash script file
 ```sh

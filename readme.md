@@ -3,23 +3,35 @@
 
 - [Basics](#basics)
 - [Quotes](#quotes)
-- [String Manipulation](#string-manipulation)
 - [Reading User input](#reading-user-input)
+- [String](#string)
+    - [String concatenation](#string-concatenation)
+    - [String Manipulation](#string-manipulation)
+    - [String Equal and Contain](#string-equal-and-contain)
     - [Here Docs](#here-docs)
 - [Control Statement](#control-statement)
     - [If Statement](#if-statement)
     - [Iteration Statement](#iteration-statement)
+        - [break and continue statement](#break-and-continue-statement)
 - [Command Substitution](#command-substitution)
+- [echo Command](#echo-command)
+    - [-e option](#-e-option)
+    - [echo Newline problem](#echo-newline-problem)
 - [Sed](#sed)
 - [AWK](#awk)
 - [Set Command](#set-command)
-- [Other Commands](#other-commands)
+- [Misc](#misc)
+- [Snippes](#snippes)
+    - [Write to file](#write-to-file)
+    - [Append to file](#append-to-file)
+    - [Read a file line by line](#read-a-file-line-by-line)
+    - [Read file content](#read-file-content)
 
 <!-- /TOC -->
 
 Resources:
 * [Linux Command](http://linuxcommand.org/index.php)
-* [Bash Guide for Beginners](Bash Guide for Beginners)
+* [Book - Bash Guide for Beginners](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/)
 * [Advanced Bash-Scripting Guide](http://www.tldp.org/LDP/abs/html/index.html)
 * [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents)
 To Run Bash in Windows OS, install Git. Use Git Bash to run bash code.
@@ -119,33 +131,6 @@ echo "\t\n" # \t\n note  \t and \n have no special meaning inside ""
 echo -e "\t\n" # the correct way to escape for \t and \n
 ```
 
-# String Manipulation
-String Length
-```bash
-stringZ=abcABC123ABCabc
-echo ${#stringZ}   # 15
-echo `expr length $stringZ`  # 15
-```
-
-Substring, format is ${string:position} or ${string:position:length}
-```bash
-stringZ=abcABC123ABCabc
-echo ${stringZ:5}    # C123ABCabc
-echo ${stringZ:2:3}    # cAB
-```
-
-Substring Replacement for 1st match: ${string/substring/replacement} <br>
-Substring Replacement for all match: ${string//substring/replacement}
-```bash
-stringZ=abcABC123ABCabc
-echo ${stringZ/abc/xyz} # Replaces first match of 'abc' with 'xyz'.
-echo ${stringZ//abc/xyz}  # Replaces all matches of 'abc' with # 'xyz'.
-```
-
-
-Reference:
-* [For more, see Manipulating Strings Guide](https://www.tldp.org/LDP/abs/html/string-manipulation.html)
-
 
 # Reading User input
 reading from input
@@ -166,6 +151,65 @@ echo 'This string will be piped to stdin.' | /my/bash/script
 value1
 value2
 STDIN
+```
+
+
+# String
+## String concatenation
+```bash
+str1="Hello"
+str2="World"
+echo "$str1$str2"
+```
+
+you can you +=, but it is less portable. it require bash > 3.1
+
+Reference: 
+* [Stackoverflow](https://stackoverflow.com/questions/14325722/concatenating-variables-in-bash)
+
+## String Manipulation
+String Length
+```bash
+stringZ=abcABC123ABCabc
+echo ${#stringZ}   # 15
+echo `expr length $stringZ`  # 15
+```
+
+Substring, format is ${string:position} or ${string:position:length}
+```bash
+stringZ=abcABC123ABCabc
+echo ${stringZ:5}    # C123ABCabc
+echo ${stringZ:2:3}    # cAB
+```
+
+Substring Replacement for 1st match: ${string/substring/replacement} <br>
+Substring Replacement for all match: ${string//substring/replacement}
+```bash
+stringZ=abcABC123ABCabc
+echo ${stringZ/abc/xyz} # Replaces first match of 'abc' with 'xyz'.
+echo ${stringZ//abc/xyz}  # Replaces all matches of 'abc' with 'xyz'.
+```
+
+
+Reference:
+* [For more, see Manipulating Strings Guide](https://www.tldp.org/LDP/abs/html/string-manipulation.html)
+
+
+## String Equal and Contain
+check if two strings are the equal
+```bash
+str="abc"
+if [[ "abc" == "$str" ]]; then
+    echo "same!"
+fi
+```
+
+check a substring can be found
+```bash
+searchStr="ef"
+if [[ "abcdefg" =~ "$searchStr" ]]; then
+    echo "found!"
+fi
 ```
 
 ## Here Docs
@@ -253,6 +297,28 @@ while read line; do
 done < input.txt
 ```
 
+### break and continue statement
+break demo
+```bash
+while read line; do
+    if [[ "$line" =~ "########" ]]; then
+        break
+    fi
+    echo "$line"
+done < $input
+```
+
+continue demo
+```bash
+input="/etc/hosts"
+while read line; do
+    if [[ "$line" =~ ""########"" ]]; then
+        continue
+    fi
+    echo "$line"
+done < $input
+```
+
 # Command Substitution
 Syntax - recommended is $(). Backquote is deprecated.
 ```bash
@@ -267,6 +333,35 @@ echo $(date +%m/%d/%y)
 touch file-$(date +%y-%m-%d).txt
 ```
 
+# echo Command
+## -e option
+-e enable interpretation of backslash escapes
+  If -e is in effect, the following sequences are recognized:
+* \\\\     backslash
+* \a     alert (BEL)
+* \b     backspace
+* \c     produce no further output
+* \e     escape
+* \f     form feed
+* \n     new line
+* \r     carriage return
+* \t     horizontal tab
+* \v     vertical tab
+
+## echo Newline problem
+IFS = Internal Field Separators. during the blank interpretation phase, spaces, tabs and newlines are interpreted as separators between words
+
+see details in [stackoverflow - File content into unix variable with newlines](https://stackoverflow.com/questions/2789319/file-content-into-unix-variable-with-newlines)
+```sh
+content=$(cat test.txt)
+echo $content
+```
+
+to fix, add double quotes
+```sh
+content=$(cat test.txt)
+echo "$content"
+```
 
 # Sed
 Sed is the ultimate stream editor. It performs editing operations from standard input or a file.
@@ -371,8 +466,8 @@ Reference
 - [Set Reference](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
 - [ruanyifeng.com Set Command](http://www.ruanyifeng.com/blog/2017/11/bash-set.html)
 
-# Other Commands
-. and source command<br>
+# Misc
+**dot(.) or source command**<br>
 Dot means source the input file. 
 [meaning of dot command](https://unix.stackexchange.com/questions/114300/whats-the-meaning-of-a-dot-before-a-command-in-shell)
 
@@ -389,5 +484,39 @@ echo $?
 
 Reference:
 * [AWK Tutorial](https://www.tutorialspoint.com/awk/index.htm)
+
+
+# Snippes
+## Write to file
+```sh
+echo "hello world" > file
+```
+
+## Append to file
+```sh
+echo "hello world" >> file
+```
+
+
+## Read a file line by line
+```sh
+input="/home/xing/Desktop/file.txt"
+while read line; do
+    echo $line
+done < $input
+```
+
+
+## Read file content
+```bash
+content=$(cat test.txt)
+```
+or
+```bash
+content=$( < "/home/xing/Desktop/file.txt" )
+echo $content
+```
+
+
 
 

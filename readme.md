@@ -19,6 +19,8 @@
     - [echo Newline problem](#echo-newline-problem)
 - [Sed](#sed)
 - [AWK](#awk)
+    - [AWK function](#awk-function)
+    - [Conditional](#conditional)
 - [Set Command](#set-command)
 - [Misc](#misc)
 - [Snippes](#snippes)
@@ -428,31 +430,65 @@ echo $input | sed 's|\\|\\\\|g'
 AWK can solve complex text processing tasks with a few lines of code. 
 By default AWK execute commands on every line. We can restrict this by providing patterns.
 
+Tutorial: [Ruanyifeng awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+
+
 Basic syntax
 ```bash
 # awk [options] file
-awk '{print}' marks.txt # to display the content of a file marks.txt
+awk '{print}' input.txt # to display the content of a file input.txt
 ```
 
-marks.txt
-```
-1) Amit     Physics   80
-2) Rahul    Maths     90
-3) Shyam    Biology   87
-4) Kedar    English   85
-5) Hari     History   89
-```
+awk use space and tabs to separate each line into columns.
 
-run with a command file. command.txt has content {print}
 ```bash
-awk -f command.txt marks.txt
+echo -e 'hello foo bar' > demo.txt
+awk '{ print $0 }' demo.txt # hello foo bar
+awk '{ print $1 }' demo.txt # hello
+awk '{ print $2 }' demo.txt # foo
+awk '{ print $3 }' demo.txt # bar
 ```
 
-To print certain columns. $0 represent the whole line
+
+To print using a different separator, use `-F` flag. Here the separator is :. $0 represent the whole line. $1, $2, $3... represent the columes.
 ```bash
-# print column 3 and column 4
-awk '{print $3 "\t" $4}' marks.txt
+$ echo -e 'a:b:c\nd:e:f' > demo.txt
+$ awk -F ':' '{ print $0}' demo.txt # prints the input, a:b:c and d:e:f
+$ awk -F ':' '{ print $1}' demo.txt # prints 1st column, a and d
+$ awk -F ':' '{ print $2}' demo.txt # prints 2nd column, b and e
 ```
+
+## AWK function
+awk provides build in functions
+
+common functions
+* tolower()
+* length()
+* substr()
+* sin()
+* cos()
+* sqrt()
+* rand()
+
+```bash
+echo -e 'hello foo\nhi bar' > demo.txt
+awk '{ print toupper($1) }' demo.txt # HELLO
+```
+
+see [build-in functions reference](https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din)
+
+## Conditional
+
+syntax
+```bash
+awk 'condition action' filename
+```
+
+```bash
+$ echo -e 'hello:foo\nhi:bar' > demo.txt
+$ awk -F ':' '$1 == "hi" {print $0}' demo.txt # print only if 1st column equals "h1"
+```
+
 
 # Set Command
 Set command is very useful for debugging and maintainance of script.

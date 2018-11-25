@@ -15,7 +15,7 @@
         - [break and continue statement](#break-and-continue-statement)
 - [Command Substitution](#command-substitution)
 - [echo Command](#echo-command)
-    - [-e option](#-e-option)
+    - [-e option](#e-option)
     - [echo Newline problem](#echo-newline-problem)
 - [Sed](#sed)
 - [AWK](#awk)
@@ -28,6 +28,7 @@
     - [Append to file](#append-to-file)
     - [Read a file line by line](#read-a-file-line-by-line)
     - [Read file content](#read-file-content)
+    - [Check directory not exist](#check-directory-not-exist)
 
 <!-- /TOC -->
 
@@ -562,4 +563,10 @@ echo $content
 
 
 
-
+## Check directory not exist
+if directory not exist, create it
+```bash
+if [ ! -d "dirname" ]; then
+    mkdir dirname
+fi
+```

@@ -43,9 +43,9 @@ Resources:
 To Run Bash in Windows OS, install Git. Use Git Bash to run bash code.
 
 # Basics
-A shell script typically begins with a shebang:
+A bash script typically begins with a shebang:
 ```bash
-#!/bin/sh
+#!/bin/bash
 ```
 
 Bourne shell usually starts with `#!/bin/sh`. It is oldest. Bash shell script starts with `#!/bin/bash`. 

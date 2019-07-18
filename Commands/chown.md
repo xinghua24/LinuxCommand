@@ -15,7 +15,7 @@ example
 $ ls -l log.txt 
 -rw-r--r-- 1 root root 5726 Jan 21 02:27 log.txt
 
-sudo chown -v xing:root log.txt 
+$ sudo chown -v xing:root log.txt 
 changed ownership of 'log.txt' from root:root to xing:root
 
 $ ls -l log.txt 

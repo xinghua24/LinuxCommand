@@ -2,33 +2,38 @@
 <!-- TOC -->
 
 - [Basics](#basics)
+  - [Shebang](#shebang)
+  - [Exit status](#exit-status)
+  - [Execute bash script](#execute-bash-script)
+  - [Read from command line](#read-from-command-line)
+  - [variable](#variable)
 - [Quotes](#quotes)
 - [Reading User input](#reading-user-input)
 - [String](#string)
-    - [String concatenation](#string-concatenation)
-    - [String Manipulation](#string-manipulation)
-    - [String Equal and Contain](#string-equal-and-contain)
-    - [Here Docs](#here-docs)
+  - [String concatenation](#string-concatenation)
+  - [String Manipulation](#string-manipulation)
+  - [String Equal and Contain](#string-equal-and-contain)
+  - [Here Docs](#here-docs)
 - [Control Statement](#control-statement)
-    - [If Statement](#if-statement)
-    - [Iteration Statement](#iteration-statement)
-        - [break and continue statement](#break-and-continue-statement)
+  - [If Statement](#if-statement)
+  - [Iteration Statement](#iteration-statement)
+    - [break and continue statement](#break-and-continue-statement)
 - [Command Substitution](#command-substitution)
 - [echo Command](#echo-command)
-    - [-e option](#e-option)
-    - [echo Newline problem](#echo-newline-problem)
+  - [-e option](#e-option)
+  - [echo Newline problem](#echo-newline-problem)
 - [Sed](#sed)
 - [AWK](#awk)
-    - [AWK function](#awk-function)
-    - [Conditional](#conditional)
+  - [AWK function](#awk-function)
+  - [Conditional](#conditional)
 - [Set Command](#set-command)
 - [Misc](#misc)
 - [Snippes](#snippes)
-    - [Write to file](#write-to-file)
-    - [Append to file](#append-to-file)
-    - [Read a file line by line](#read-a-file-line-by-line)
-    - [Read file content](#read-file-content)
-    - [Check directory not exist](#check-directory-not-exist)
+  - [Write to file](#write-to-file)
+  - [Append to file](#append-to-file)
+  - [Read a file line by line](#read-a-file-line-by-line)
+  - [Read file content](#read-file-content)
+  - [Check directory not exist](#check-directory-not-exist)
 
 <!-- /TOC -->
 
@@ -48,37 +53,56 @@ A bash script typically begins with a shebang:
 #!/bin/bash
 ```
 
+## Shebang
+Shebang tells Linux how to interpret the commands in the script.
+
 Bourne shell usually starts with `#!/bin/sh`. It is oldest. Bash shell script starts with `#!/bin/bash`. 
 Bash stands for "Bourne Again SHell". It is a replacement/improvement of original Bourne shell(sh).
 
-/bin/sh might be a link to ash, bash, dash, ksh, zsh, etc.
-
-As long as you stick to sh features only, you can (and probably even should) use #!/bin/sh and the script should work fine, no matter which shell it is.
-
-You should use #!/usr/bin/env bash for portability: different *nixes put bash in different places, 
-and using /usr/bin/env is a workaround to run the first bash found on the PATH
-
-Using a shebang line to invoke the appropriate interpreter is not just for BASH. 
-You can use the shebang for any interpreted language on your system such as Perl, Python, PHP (CLI) and many others.
-
-shebang can also used for other languages
-```
-#!/usr/bin/env perl
+```bash
+#!/bin/bash
 ```
 
 
 * [Bash Shebang](https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang)
 * [Quora diff between Shell and Bash](https://www.quora.com/What-is-the-difference-between-Shell-scripting-and-Bash-Shell-scripting)
 
-to execute a bash script file
+## Exit status
+All the linux commands executed will return an exit status. use `echo $?` to check the exit status
+
+example
+```bash
+$ ls
+
+$ echo $?
+0
+
+$ ls 012345
+ls: cannot access '012345': No such file or directory
+
+$ echo $?
+2
+```
+
+## Execute bash script
+You can put the bash script in system path for easy access. A good path to store user script is `/usr/local/bin`.
+
+change permission
+```bash
+chmod +x myScript.sh
+```
+
+
+to execute a bash script file in current directory
 ```sh
 bash myScript.sh
 
-chmod 755 myScript.sh
+# or 
+
 ./myScript.sh
 ```
 
-Read from command line
+## Read from command line
 ```sh
 #!/bin/bash
 read -p "Please enter a value: " val
@@ -94,7 +118,7 @@ printf "%-5s %-10s %-4.2f\n" 3 Jeff 77.564
 ```
 
 
-<br>
+## variable
 
 **using variables** - variables can be accessed by prefixing variable name with dollar sign($).
 you may also use ${var}
